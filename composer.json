@@ -1,0 +1,33 @@
+{
+    "name": "satesh/phpcs-gitlab-report",
+    "description": "Output your PHP_CodeSniffer report as a GitLab Code Quality report",
+    "type": "library",
+    "keywords": [
+        "phpcs",
+        "php-codesniffer",
+        "report",
+        "gitlab",
+        "code quality"
+    ],
+    "homepage": "https://github.com/sateshpersaud/phpcs-gitlab-report",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Satesh Persaud",
+            "email": "sateshpersaud18@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/sateshpersaud/phpcs-gitlab-report/issues",
+        "source": "https://github.com/sateshpersaud/phpcs-gitlab-report"
+    },
+    "require": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Satesh\\Phpcs\\": "src"
+        }
+    }
+}
