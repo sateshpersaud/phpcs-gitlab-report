@@ -1,11 +1,11 @@
 {
     "name": "satesh/phpcs-gitlab-report",
-    "description": "Output your PHP_CodeSniffer report as a GitLab Code Quality report",
+    "description": "Output your PHP CodeSniffer report as a GitLab Code Quality report",
     "type": "library",
     "keywords": [
         "phpcs",
         "php-codesniffer",
-        "report",
+        "phpcs-report",
         "gitlab",
         "code quality"
     ],
@@ -23,7 +23,11 @@
         "source": "https://github.com/sateshpersaud/phpcs-gitlab-report"
     },
     "require": {
+        "ext-json": "*",
         "squizlabs/php_codesniffer": "3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.3"
     },
     "autoload": {
         "psr-4": {
