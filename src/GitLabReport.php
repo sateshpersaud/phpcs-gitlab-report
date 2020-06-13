@@ -17,7 +17,7 @@ class GitLabReport implements Report
                 foreach ($columnErrors as $error) {
                     $gitLabError = [];
 
-                    $gitLabError['description'] = rtrim($error['message'], '.');
+                    $gitLabError['description'] = rtrim($error['message'], '.') . " ({$error['source']})";
 
                     $gitLabError['fingerprint'] = md5("{$error['source']}-{$report['filename']}-{$line}-{$column}");
 

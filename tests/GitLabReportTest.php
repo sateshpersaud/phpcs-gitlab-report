@@ -36,12 +36,12 @@ class GitLabReportTest extends TestCase
 
     private function getFileReport(): string
     {
-        return '{"description":"Expected 1 space between class keyword and class name; 2 found","fingerprint":"b8bb8bb00c5549ff34161bd8a9fbc799","location":{"path":"files\/ExampleClass.php","lines":{"begin":1}}},';
+        return '{"description":"Expected 1 space between class keyword and class name; 2 found (PSR2.Classes.ClassDeclaration.SpaceAfterKeyword)","fingerprint":"b8bb8bb00c5549ff34161bd8a9fbc799","location":{"path":"files\/ExampleClass.php","lines":{"begin":1}}},';
     }
 
     private function getFullReport(): string
     {
-        return '[{"description":"Expected 1 space between class keyword and class name; 2 found","fingerprint":"b8bb8bb00c5549ff34161bd8a9fbc799","location":{"path":"files\/ExampleClass.php","lines":{"begin":1}}}]';
+        return '[{"description":"Expected 1 space between class keyword and class name; 2 found (PSR2.Classes.ClassDeclaration.SpaceAfterKeyword)","fingerprint":"b8bb8bb00c5549ff34161bd8a9fbc799","location":{"path":"files\/ExampleClass.php","lines":{"begin":1}}}]';
     }
 
     private function getPhpcsReport(): array
