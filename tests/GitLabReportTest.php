@@ -7,9 +7,9 @@ class GitLabReportTest extends TestCase
 {
     public function testGenerateFileReport(): string
     {
-        $reportOutput = $this->getGitLabReport();
+        $fileReport = $this->getFileReport();
 
-        $this->expectOutputString($reportOutput);
+        $this->expectOutputString($fileReport);
 
         $gitLabReport = new GitLabReport();
 
@@ -17,7 +17,7 @@ class GitLabReportTest extends TestCase
 
         static::assertTrue($returnValue);
 
-        return $reportOutput;
+        return $fileReport;
     }
 
     /**
@@ -25,31 +25,38 @@ class GitLabReportTest extends TestCase
      */
     public function testGenerate(string $fileReport): void
     {
-        $this->expectOutputString('[' . rtrim($fileReport, ',') . ']');
+        $fullReport = $this->getFullReport();
+
+        $this->expectOutputString($fullReport);
 
         $gitLabReport = new GitLabReport();
 
-        $gitLabReport->generate($fileReport, 1, 1, 1, 1);
+        $gitLabReport->generate($fileReport, 0, 0, 0, 0);
     }
 
-    private function getGitLabReport(): string
+    private function getFileReport(): string
     {
-        return '{"description":"PHP files must only contain PHP code","fingerprint":"3719b59c961e426a579b2ff715c24b04","location":{"path":"files\/TestClass.php","lines":{"begin":3}}},';
+        return '{"description":"Expected 1 space between class keyword and class name; 2 found","fingerprint":"b8bb8bb00c5549ff34161bd8a9fbc799","location":{"path":"files\/ExampleClass.php","lines":{"begin":1}}},';
+    }
+
+    private function getFullReport(): string
+    {
+        return '[{"description":"Expected 1 space between class keyword and class name; 2 found","fingerprint":"b8bb8bb00c5549ff34161bd8a9fbc799","location":{"path":"files\/ExampleClass.php","lines":{"begin":1}}}]';
     }
 
     private function getPhpcsReport(): array
     {
         return [
-            'filename' => 'files/TestClass.php',
+            'filename' => 'files/ExampleClass.php',
             'errors' => 1,
             'warnings' => 0,
-            'fixable' => 0,
+            'fixable' => 1,
             'messages' => [
-                3 => [
-                    1 => [
+                1 => [
+                    2 => [
                         [
-                            'message' => 'PHP files must only contain PHP code.',
-                            'source' => 'Generic.Files.InlineHTML.Found',
+                            'message' => 'Expected 1 space between class keyword and class name; 2 found',
+                            'source' => 'PSR2.Classes.ClassDeclaration.SpaceAfterKeyword',
                             'severity' => 5,
                             'fixable' => false,
                             'type' => 'ERROR',
