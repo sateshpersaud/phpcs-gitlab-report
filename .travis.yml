@@ -1,0 +1,9 @@
+language: php
+
+php:
+  - 7.3
+
+install:
+  - composer install  --classmap-authoritative --ignore-platform-reqs --quiet
+
+script: vendor/bin/phpunit
